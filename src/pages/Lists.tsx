@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import styled from "styled-components";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom"; 
 import {
@@ -21,13 +20,6 @@ interface IData {
   image: string;
   price: number;
 }
-
-const CardWrapper = styled(Card)`
-  /* Custom styles for the card using styled-components */
-  max-width:250px;
-  margin: 0 auto;
-  margin-bottom: 1rem;
-`;
 
 function MyComponent () {
   const [data, setData] = useState<IData[]>([]);
@@ -60,7 +52,7 @@ function MyComponent () {
       </AppBar>
       <div style={{ display: "flex", flexWrap: "wrap" }}>
         {data.map((item) => (
-          <CardWrapper key={item.id}>
+          <Card key={item.id} style={{width: 250, marginBottom: '1rem', marginLeft: 'auto', marginRight: 'auto', }}>
             <Link to={`/${item.id}`}>
               <CardContent>
                 <Grid container direction="column" spacing={1}>
@@ -80,7 +72,7 @@ function MyComponent () {
                 </Grid>
               </CardContent>
             </Link>
-          </CardWrapper>
+          </Card>
         ))}
       </div>
     </div>
